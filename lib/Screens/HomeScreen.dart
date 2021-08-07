@@ -1,11 +1,22 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mrhairsaloon/Screens/ServicesScreen.dart';
 import 'package:mrhairsaloon/Widgets/MyDrawer.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var document = FirebaseFirestore.instance.collection("Slider").doc('Sliders');
+  var document2 =
+      FirebaseFirestore.instance.collection("DayOffers").doc('OffersDay');
+  var document3 =
+      FirebaseFirestore.instance.collection("ImageOffer").doc('Offers');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,61 +30,92 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 16.0),
           child: Column(
             children: [
-              CarouselSlider(
-                  items: [
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 8.0),
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                "https://bizimages.withfloats.com/actual/5f696573ad51d2000178fc9a.jpg"),
-                            fit: BoxFit.cover),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                "https://5.imimg.com/data5/GI/HB/DI/SELLER-54443168/wedding-bridal-makeup-service-500x500.png"),
-                            fit: BoxFit.cover),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                "https://i.pinimg.com/736x/88/7c/81/887c81a287ef4039d8783b9637269726.jpg"),
-                            fit: BoxFit.cover),
-                      ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 5.0),
-                      width: MediaQuery.of(context).size.width,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(12)),
-                        image: DecorationImage(
-                            image: NetworkImage(
-                                "https://i.pinimg.com/originals/48/d9/3e/48d93ec1f02fcf26a05244d71f791c99.jpg"),
-                            fit: BoxFit.cover),
-                      ),
-                    ),
-                  ],
-                  options: CarouselOptions(
-                      height: 300.0,
-                      aspectRatio: 16 / 9,
-                      enableInfiniteScroll: true,
-                      viewportFraction: 0.9,
-                      autoPlay: true,
-                      autoPlayCurve: Curves.easeInOut,
-                      enlargeCenterPage: true)),
+              FutureBuilder(
+                  future: document.get(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<DocumentSnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("Something went wrong");
+                    }
+
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      Map<String, dynamic> data =
+                          snapshot.data!.data() as Map<String, dynamic>;
+                      return Column(
+                        children: [
+                          CarouselSlider(
+                              items: [
+                                Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
+                                    image: DecorationImage(
+                                        image: NetworkImage(data['Slider1']),
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
+                                    image: DecorationImage(
+                                        image: NetworkImage(data['Slider2']),
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
+                                    image: DecorationImage(
+                                        image: NetworkImage(data['Slider3']),
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
+                                    image: DecorationImage(
+                                        image: NetworkImage(data['Slider4']),
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                                Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 8.0),
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12)),
+                                    image: DecorationImage(
+                                        image: NetworkImage(data['Slider5']),
+                                        fit: BoxFit.cover),
+                                  ),
+                                ),
+                              ],
+                              options: CarouselOptions(
+                                  height: 300.0,
+                                  aspectRatio: 16 / 9,
+                                  enableInfiniteScroll: true,
+                                  viewportFraction: 0.9,
+                                  autoPlay: true,
+                                  autoPlayCurve: Curves.easeInOut,
+                                  enlargeCenterPage: true))
+                        ],
+                      );
+                    }
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }),
               SizedBox(
                 height: 40.0,
               ),
@@ -291,15 +333,30 @@ class HomeScreen extends StatelessWidget {
               SizedBox(
                 height: 40.0,
               ),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.all(16.0),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                      "https://d1csarkz8obe9u.cloudfront.net/posterpreviews/beauty-salon-promotion-design-template-71874bee1e561eb888d7c1ae3215a598_screen.jpg?ts=1584375145"),
-                ),
-              ),
+              FutureBuilder(
+                  future: document3.get(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<DocumentSnapshot> snapshot) {
+                    if (snapshot.hasError) {
+                      return Text("Something went wrong");
+                    }
+
+                    if (snapshot.connectionState == ConnectionState.done) {
+                      Map<String, dynamic> data =
+                          snapshot.data!.data() as Map<String, dynamic>;
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: const EdgeInsets.all(16.0),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(20),
+                          child: Image.network(data['ImageOffers']),
+                        ),
+                      );
+                    }
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }),
               SizedBox(
                 height: 30.0,
               ),
@@ -316,21 +373,39 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 24.0,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.network(
-                          "https://www.lakmesalon.in/sk-eu/content/dam/brands/lakme/india/1420324-offer-slider2.jpg.rendition.1960.1960.jpg"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.network(
-                          "https://www.lakmesalon.in/sk-eu/content/dam/brands/lakme/india/1420324-offer-slider2.jpg.rendition.1960.1960.jpg"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.network(
-                          "https://www.lakmesalon.in/sk-eu/content/dam/brands/lakme/india/1420324-offer-slider2.jpg.rendition.1960.1960.jpg"),
-                    ),
+                    FutureBuilder(
+                        future: document2.get(),
+                        builder: (BuildContext context,
+                            AsyncSnapshot<DocumentSnapshot> snapshot) {
+                          if (snapshot.hasError) {
+                            return Text("Something went wrong");
+                          }
+
+                          if (snapshot.connectionState ==
+                              ConnectionState.done) {
+                            Map<String, dynamic> data =
+                                snapshot.data!.data() as Map<String, dynamic>;
+                            return Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Image.network(data['offer1']),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Image.network(data['offer2']),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Image.network(data['offer3']),
+                                ),
+                              ],
+                            );
+                          }
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        })
                   ],
                 ),
               )

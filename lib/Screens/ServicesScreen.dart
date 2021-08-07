@@ -91,7 +91,7 @@ class _ServicesScreenState extends State<ServicesScreen> {
                             Text('Price:\t₹${e['SellingPrice']}/-',
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             Text(
-                              '${(double.parse(e['ActualPrice']) - double.parse(e['SellingPrice'])) / double.parse(e['ActualPrice']) * 100}%OFF',
+                              '${((double.parse(e['ActualPrice']) - double.parse(e['SellingPrice'])) / double.parse(e['ActualPrice']) * 100).toStringAsFixed(2)}%OFF',
                               style: TextStyle(
                                   color: Colors.pink,
                                   fontWeight: FontWeight.bold),
