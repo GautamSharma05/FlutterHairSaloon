@@ -16,13 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'TutorTown',
+        title: 'JustRest',
         themeMode: ThemeMode.light,
         theme: ThemeData(
           fontFamily: GoogleFonts.poppins().fontFamily,
-          primarySwatch: Colors.pink,
+          primaryColor: Colors.black,
           appBarTheme: AppBarTheme(
-            color: Color(0xFFFDBAA4),
+            color: Color(0xFFEC407A),
             elevation: 5.0,
             iconTheme: IconThemeData(color: Colors.black),
             textTheme: Theme.of(context).textTheme,

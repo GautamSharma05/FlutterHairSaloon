@@ -34,7 +34,7 @@ class AboutUs extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                      'M.R Saloon is the highest rated beauty service provider in BEAWAR! We are shaping the future of the beauty industry one step at a time. Our experts provide at home salon service to make our pricious clients experience more comfortable and hygienic. \n\nAnd we have good new! M.R Saloon has expanded its services range including home services into the list. '),
+                      'M.R Saloon is the highest rated beauty service provider in BEAWAR! We are shaping the future of the beauty industry one step at a time. Our experts provide at home salon service to make our pricious clients experience more comfortable and hygien. \n\nAnd we have good new! M.R Saloon has expanded its services range including home services into the list. '),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
