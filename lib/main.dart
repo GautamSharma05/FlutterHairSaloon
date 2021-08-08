@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.light,
         theme: ThemeData(
           fontFamily: GoogleFonts.poppins().fontFamily,
-          primaryColor: Colors.black,
+          primaryColor: Color(0xFF001B40),
           appBarTheme: AppBarTheme(
             color: Color(0xFFEC407A),
             elevation: 5.0,

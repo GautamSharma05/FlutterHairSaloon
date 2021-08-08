@@ -48,8 +48,12 @@ class _MyDrawerState extends State<MyDrawer> {
                       padding: EdgeInsets.zero,
                       child: UserAccountsDrawerHeader(
                         margin: EdgeInsets.zero,
-                        accountName: Text(data['FullName']),
-                        accountEmail: Text(data['Email']),
+                        accountName: Text(
+                          data['FullName'],
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        accountEmail: Text(data['Email'],
+                            style: TextStyle(color: Colors.white)),
                         currentAccountPicture: CircleAvatar(
                           backgroundImage: NetworkImage(imageurl),
                         ),

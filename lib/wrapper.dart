@@ -15,7 +15,8 @@ class _WrapperState extends State<Wrapper> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash: 'assets/images/logo.jpeg',
+      backgroundColor: Color(0xFF001B40),
+      splash: 'assets/images/logo.png',
       nextScreen: FirebaseAuth.instance.currentUser == null
           ? LoginScreen()
           : HomeScreen(),
