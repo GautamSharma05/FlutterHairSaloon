@@ -99,7 +99,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10.0),
                       child: Text(
-                        'WHY FROM M.R SALOON - At HOME ${e['ServiceName']}?',
+                        'WHY FROM JustRest - At HOME ${e['ServiceName']}?',
                         style: TextStyle(
                             color: Colors.pink,
                             fontSize: 18,
@@ -110,7 +110,7 @@ class _DetailScreenState extends State<DetailScreen> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        '\u2022 Enjoy your best service at your doorstep now. \n \u2022 Our services providers are well trained for COVID-19 and precautions. \n \u2022 Our experts use disinfectants to disinfect their equipment, tools and working area. \n \u2022 Our experts update their daily temperature over their M.R Saloon Partner App \n \u2022 We only use disposable bed sheets,disposable masks and disposable razors etc. \n \u2022 Our experts use their own vehicle and avoid touch greetings \n \u2022 Our experts will provide a disposable marks and a pair of gloves to the customers.',
+                        '\u2022 Enjoy your best service at your doorstep now. \n \u2022 Our services providers are well trained for COVID-19 and precautions. \n \u2022 Our experts use disinfectants to disinfect their equipment, tools and working area. \n \u2022 Our experts update their daily temperature over their JustRest Partner App \n \u2022 We only use disposable bed sheets,disposable masks and disposable razors etc. \n \u2022 Our experts use their own vehicle and avoid touch greetings \n \u2022 Our experts will provide a disposable marks and a pair of gloves to the customers.',
                         style: TextStyle(letterSpacing: 1.0),
                       ),
                     ),
