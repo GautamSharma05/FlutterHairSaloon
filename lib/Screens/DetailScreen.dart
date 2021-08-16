@@ -140,7 +140,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       padding: const EdgeInsets.only(top: 16.0, left: 16.0),
                       child: Align(
                         alignment: Alignment.topLeft,
-                        child: Text('M.R SALOON SUGGESTION',
+                        child: Text('JustRest SUGGESTION',
                             style: TextStyle(
                                 color: Colors.pink,
                                 fontSize: 18,
