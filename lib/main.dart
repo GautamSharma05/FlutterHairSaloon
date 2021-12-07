@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             color: Color(0xFFEC407A),
             elevation: 5.0,
             iconTheme: IconThemeData(color: Colors.black),
-            textTheme: Theme.of(context).textTheme,
+            //textTheme: Theme.of(context).textTheme,
           ),
         ),
         home: Wrapper());
